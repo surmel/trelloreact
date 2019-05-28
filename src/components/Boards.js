@@ -40,5 +40,6 @@ class Boards extends Component {
 
 }
 
+
 export default Boards;
 
