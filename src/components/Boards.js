@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import CreateNewBoard from './create_new_board';
 
 class Boards extends Component {
@@ -10,17 +10,21 @@ class Boards extends Component {
             term: '',
             name: [],
             showComponent: false
-        }
+        };
         this.InputChangeHandler = this.InputChangeHandler.bind(this);
         this.CreateBoard = this.CreateBoard.bind(this)
     }
 
     CreateBoard() {
-        this.setState({
-            showComponent: true,
-            name: [...this.state.name, this.state.term],
-            term: ''
-        })
+        if (this.state.name.indexOf(this.state.term) === -1) {
+            this.setState({
+                showComponent: true,
+                name: [...this.state.name, this.state.term]
+            })
+        } else {
+            alert('mi ara');
+        }
+
     }
 
     InputChangeHandler(event) {
@@ -28,7 +32,7 @@ class Boards extends Component {
     }
 
     render() {
-        return(
+        return (
             <div>
                 <h3>Boards</h3>
                 <CreateNewBoard name={this.state.name} showComponent={this.state.showComponent}/>
