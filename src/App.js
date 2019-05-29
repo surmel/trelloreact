@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import Boards from './components/Boards/Boards';
 import './App.css';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import NavBar from './components/NavBar/NavBar';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Boards from "./components/Boards/Boards";
 
 class App extends Component {
     render() {
         return (
             <Router>
-                <Route exact path="/" component={Boards}/>
-                {/*<Route path="/list/:name/:id" component={ListComponent}/>*/}
+                <NavBar/>
+                <Switch>
+                    <Route exact path='/' component={Boards}/>
+                </Switch>
             </Router>
-
         );
     }
 }
