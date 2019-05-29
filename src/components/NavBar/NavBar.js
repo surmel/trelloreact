@@ -3,7 +3,7 @@ import './navbar.css';
 import trelloLogo from '../../Images/trelloLogo.svg'
 import homeButton from '../../Images/homeButton.svg'
 import board from '../../Images/board.svg'
-import {Link, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class NavBar extends React.Component {
     render() {

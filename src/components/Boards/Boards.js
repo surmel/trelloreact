@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CreateNewBoard from './CreateNewBoard';
-import {Link,} from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 
 class Boards extends Component {
 
