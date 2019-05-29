@@ -48,7 +48,6 @@
     float: left;
     position: absolute;
     display: flex;
-    justify-content: baseline;
 }
 .board {
     height: 30px;
