@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './Components/NavBar/NavBar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Boards from "./components/Boards/Boards";
-import ListComponent from "./components/Lists/ListComponent";
+import Boards from "./Components/Boards/Boards";
+import ListComponent from "./Components/Lists/ListComponent";
 
 class App extends Component {
     render() {

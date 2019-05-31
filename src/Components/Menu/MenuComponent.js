@@ -11,8 +11,9 @@ class MenuComponent extends React.Component {
         style: 'slideRight sideMenu',
         mode: 'closed',
         currentMenu: '',
-        prevMenu: '',
+        prevMenu: false,
         menuTitle: 'Menu',
+        bodyBackground: false,
         menuItems: {
             mainMenu: {
                 title: 'Menu',
@@ -42,6 +43,7 @@ class MenuComponent extends React.Component {
         super(props);
         this.onToggleHandler = this.onToggleHandler.bind(this);
         this.onOpenMenuContentHandler = this.onOpenMenuContentHandler.bind(this);
+        this.onPrevMenuHandler = this.onPrevMenuHandler.bind(this);
     }
 
     onOpenMenuContentHandler(e, key) {
@@ -73,12 +75,15 @@ class MenuComponent extends React.Component {
         }
         if (localStorage.getItem('backgroundType') === 'image') {
             bodyBackground = "url(" + bodyBackground + ")";
-            console.log(bodyBackground);
             document.body.style.backgroundImage = bodyBackground;
             document.body.style.backgroundSize = 'cover';
         } else {
             document.body.style.backgroundColor = bodyBackground;
         }
+        this.setState({
+            ...this.state,
+            bodyBackground: bodyBackground
+        })
     }
 
     turnOffAllMenus() {
@@ -122,20 +127,51 @@ class MenuComponent extends React.Component {
         }
     }
 
+    onPrevMenuHandler() {
+        let goTo = this.state.prevMenu;
+        let currentMenu = this.state.currentMenu;
+        let setPrevMenu = false;
+
+        if(goTo === 'backgroundMenu'){
+            setPrevMenu = "mainMenu"
+        }
+        this.setState({
+            prevMenu: setPrevMenu,
+            currentMenu: goTo,
+            menuTitle: this.state.menuItems[goTo].title,
+            menuItems: {
+                ...this.state.menuItems,
+                [currentMenu]: {
+                    ...this.state.menuItems[currentMenu],
+                    opened: false
+                },
+                [goTo]: {
+                    ...this.state.menuItems[goTo],
+                    opened: true,
+                }
+            }
+        });
+    }
+
     render() {
         const {mainMenu, backgroundMenu, aboutBoard, changeImage, changeColor} = this.state.menuItems;
+        const previousMenu = this.state.prevMenu;
         return (
             <div>
                 <span className="menuButton" onClick={this.onToggleHandler}>Menu</span>
                 <div className={this.state.style}>
                     <div className="menuHeader row">
-                        <div className='col-md text-left'> </div>  {/*this tag only for css :D */}
-                        <div className='col-md text-center'>{this.state.menuTitle}</div>
+                        <div className='col-md text-left'>
+                            {
+                                previousMenu ? <i className="arrow left" onClick={this.onPrevMenuHandler}></i> : ''
+                            }
+                        </div>
+                        <div>{this.state.menuTitle}</div>
                         <div className='col-md text-right' onClick={this.onToggleHandler}>X</div>
                     </div>
                     {
                         mainMenu.opened ?
-                            <MainMenuComponent onMenuItemClickHandler={this.onOpenMenuContentHandler}/> : ''
+                            <MainMenuComponent bodyBackground={this.state.bodyBackground} onMenuItemClickHandler={this.onOpenMenuContentHandler}/> : ''
                     }
                     {
                         backgroundMenu.opened ?
