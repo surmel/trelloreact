@@ -5,7 +5,6 @@ class ChangeBackgroundImageComponent extends React.Component {
     constructor(props){
         super(props);
         this.backgroundColorHandler = this.backgroundColorHandler.bind(this);
-        console.log(this.props);
     }
 
     backgroundColorHandler(image){
