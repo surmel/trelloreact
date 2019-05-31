@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 class NavBar extends React.Component {
     render() {
         return (
-            <div className='navbar'>
+            <div className='navbar_custom'>
                 <div className='leftPart'>
                     <Link to='/'>
                         <button className='homeButton1'><img src={homeButton} id='homeButton' alt=''/></button>

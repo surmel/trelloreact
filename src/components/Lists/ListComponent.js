@@ -56,27 +56,32 @@ class ListComponent extends React.Component {
 
         return (
             <div style={styles.container}>
-                {lists.map((value, index) => {
-                    return (
-                        <div key={value.id}>
-                            <span>{value.id}</span>
-                            <span>{value.name}</span>
+                <div className='container-fluid'>
+                    <div className='row'>
+                        {lists.map((value, index) => {
+                            return (
+                                <div key={value.id} className='col-md'>
+                                    <span>{value.id}</span>
+                                    <span>{value.name}</span>
+                                </div>
+                            )
+                        })}
+                        <div
+                            className={!this.state.openedListAction ? 'cardAdd' : 'cardAdd changedHeight'}>  {/*help to change this code part*/}
+                            {this.state.openedListAction ?
+                                <div onClick={this.toggleListAction}>
+                                    <input type="text" style={styles.nameInput} placeholder='Ввести заголовок списка'
+                                           value={this.state.cardName} onChange={this.cardNameChange.bind(this)}/>
+                                    <button className='addColumn' onClick={this.addNewCard.bind(this)}>Добавить список
+                                    </button>
+                                    <img src={cancel} className='cancelClass' alt="cancelCard"
+                                         onClick={this.toggleListAction}
+                                    />
+                                </div> : ''
+                            }
+                            <p onClick={this.toggleListAction} className={'addCard'}>+ Добавьте еще одну колонку</p>
                         </div>
-                    )
-                })}
-
-               <div className={!this.state.openedListAction ? 'cardAdd' : 'cardAdd changedHeight'}>  {/*help to change this code part*/}
-                    {this.state.openedListAction ?
-                        <div onClick={this.toggleListAction}>
-                            <input type="text" style={styles.nameInput} placeholder='Ввести заголовок списка'
-                                   value={this.state.cardName} onChange={this.cardNameChange.bind(this)}/>
-                            <button className='addColumn' onClick={this.addNewCard.bind(this)}>Добавить список</button>
-                            <img src={cancel} className='cancelClass' alt="cancelCard"
-                                 onClick={this.toggleListAction}
-                            />
-                        </div> : ''
-                    }
-                    <p onClick={this.toggleListAction} className={'addCard'}>+ Добавьте еще одну колонку</p>
+                    </div>
                 </div>
             </div>
         )

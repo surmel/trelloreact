@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CreateNewBoard from './CreateNewBoard';
-import {Link, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 class Boards extends Component {
 
@@ -49,7 +49,7 @@ class Boards extends Component {
     render() {
         return (
             <div>
-                <h3>Boards</h3>
+                <h3 className='col-md-12 text-center'>Boards</h3>
                 {
                     this.state.lists.map((list) => {
                         return (
