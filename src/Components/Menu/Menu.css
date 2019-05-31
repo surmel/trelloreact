@@ -59,12 +59,13 @@ body {
     margin-top: 10px;
     float: left;
 }
-.redColor {
+.colorBlock {
     height: 90px;
     width: 45%;
     background-size: cover;
     border-radius: 7px;
     margin-top: 10px;
+    margin-left: 10px;
     float: left;
-    background: red;
+
 }

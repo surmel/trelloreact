@@ -7,7 +7,7 @@ class BackgroundComponent extends React.Component {
     }
 
     onClickHandler(e, key){
-        this.props.clickHandler(e, key);
+        this.props.onMenuItemClickHandler(e, key);
     }
 
     render() {
