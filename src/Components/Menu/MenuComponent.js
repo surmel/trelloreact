@@ -44,6 +44,7 @@ class MenuComponent extends React.Component {
         this.onToggleHandler = this.onToggleHandler.bind(this);
         this.onOpenMenuContentHandler = this.onOpenMenuContentHandler.bind(this);
         this.onPrevMenuHandler = this.onPrevMenuHandler.bind(this);
+        this.onThumbnailChangeHandler = this.onThumbnailChangeHandler.bind(this);
     }
 
     onOpenMenuContentHandler(e, key) {
@@ -68,7 +69,6 @@ class MenuComponent extends React.Component {
     }
 
     componentDidMount() {
-        //Will be changed in future
         let bodyBackground = localStorage.getItem('userBackground');
         if (!bodyBackground) {
             bodyBackground = '#0079BF';
@@ -153,6 +153,13 @@ class MenuComponent extends React.Component {
         });
     }
 
+    onThumbnailChangeHandler(newBack){
+        this.setState({
+            ...this.state,
+            bodyBackground: newBack
+        });
+    }
+
     render() {
         const {mainMenu, backgroundMenu, aboutBoard, changeImage, changeColor} = this.state.menuItems;
         const previousMenu = this.state.prevMenu;
@@ -182,11 +189,11 @@ class MenuComponent extends React.Component {
                             <AboutBoardComponent onMenuItemClickHandler={this.onOpenMenuContentHandler}/> : ''
                     }
                     {
-                        changeImage.opened ? <ChangeBackgroundImageComponent
+                        changeImage.opened ? <ChangeBackgroundImageComponent thumbnailChangeHandler={this.onThumbnailChangeHandler}
                             onMenuItemClickHandler={this.onOpenMenuContentHandler}/> : ''
                     }
                     {
-                        changeColor.opened ? <ChangeBackgroundColorComponent
+                        changeColor.opened ? <ChangeBackgroundColorComponent thumbnailChangeHandler={this.onThumbnailChangeHandler}
                             onMenuItemClickHandler={this.onOpenMenuContentHandler}/> : ''
                     }
                 </div>

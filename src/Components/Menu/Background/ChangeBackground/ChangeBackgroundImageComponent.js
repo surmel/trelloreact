@@ -10,8 +10,10 @@ class ChangeBackgroundImageComponent extends React.Component {
     backgroundColorHandler(image){
         localStorage.setItem('userBackground', image);
         localStorage.setItem('backgroundType', 'image');
-        document.body.style.backgroundImage = "url(" + image + ")";
+        let backgroundImage = "url(" + image + ")";
+        document.body.style.backgroundImage = backgroundImage;
         document.body.style.backgroundSize = 'cover';
+        this.props.thumbnailChangeHandler(backgroundImage);
     }
     render() {
         return (
