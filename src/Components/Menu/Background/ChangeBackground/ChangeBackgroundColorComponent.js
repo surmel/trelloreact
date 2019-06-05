@@ -12,6 +12,7 @@ class ChangeBackgroundColorComponent extends React.Component {
         localStorage.setItem('backgroundType', 'color');
         document.body.style.backgroundImage = 'none';
         document.body.style.backgroundColor = color;
+        this.props.thumbnailChangeHandler(color);
 
     }
 
