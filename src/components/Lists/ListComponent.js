@@ -2,6 +2,7 @@ import React from 'react';
 import './List.css';
 import cancel from '../../Images/cancel-music.svg';
 import lists from './constList'
+import MenuComponent from "../Menu/MenuComponent";
 
 const styles = {
     container: {
@@ -52,15 +53,16 @@ class ListComponent extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-
         return (
             <div style={styles.container}>
+                <div className='clearfix'>
+                    <MenuComponent/>
+                </div>
                 <div className='container-fluid'>
                     <div className='row'>
                         {lists.map((value, index) => {
                             return (
-                                <div key={value.id} className='col-md'>
+                                <div key={value.id} className='col-md listCss'>
                                     <span>{value.id}</span>
                                     <span>{value.name}</span>
                                 </div>
