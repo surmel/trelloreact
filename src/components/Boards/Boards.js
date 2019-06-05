@@ -50,10 +50,6 @@ class Boards extends Component {
     render() {
         return (
             <div>
-                <div className='clearfix'>
-                    <MenuComponent />
-                </div>
-                <h3>Boards</h3>
                 {
                     this.state.lists.map((list) => {
                         return (

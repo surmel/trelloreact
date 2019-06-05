@@ -20,6 +20,7 @@ body {
 .slideLeft {
     transition: 0.5s all ease;
     right: 0;
+    z-index: 10;
 }
 .menuButton{
     float: right;
