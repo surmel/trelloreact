@@ -1,8 +1,11 @@
 import React from 'react';
-import './List.css';
-import cancel from '../../Images/cancel-music.svg';
-import lists from './constList'
+import './css/List.css';
+import constLists from './constList'
 import MenuComponent from "../Menu/MenuComponent";
+
+import NewListButtonComponent from './NewListButtonComponent';
+import AddNewListComponent from "./AddNewListComponent";
+import NewListComponent from "./NewListComponent";
 
 const styles = {
     container: {
@@ -29,11 +32,14 @@ class ListComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            showComponent: false,
             openedListAction: false,
-            cardName: ''
+            lists: [],
+            listName: ''
         };
         // binding events
         this.toggleListAction = this.toggleListAction.bind(this);
+        this.createLists = this.createLists.bind(this);
     }
 
     toggleListAction(e) {
@@ -42,15 +48,20 @@ class ListComponent extends React.Component {
         })
     }
 
-    addNewCard(e) {
-        alert(1);
-        e.stopPropagation();
-        console.log(this.state.cardName)
+    createLists() {
+        let lists = this.state.lists;
+
+        lists.push({
+            id: this.state.lists.length,
+            name: this.state.listName
+        });
+        this.setState({
+            // ...this.state,
+            showComponent: true,
+            lists: lists,
+        });
     }
 
-    cardNameChange(e) {
-        this.setState({cardName: e.target.value})
-    }
 
     render() {
         return (
@@ -60,7 +71,7 @@ class ListComponent extends React.Component {
                 </div>
                 <div className='container-fluid'>
                     <div className='row'>
-                        {lists.map((value, index) => {
+                        {constLists.map((value, index) => {
                             return (
                                 <div key={value.id} className='col-md listCss'>
                                     <span>{value.id}</span>
@@ -68,21 +79,9 @@ class ListComponent extends React.Component {
                                 </div>
                             )
                         })}
-                        <div
-                            className={!this.state.openedListAction ? 'cardAdd' : 'cardAdd changedHeight'}>  {/*help to change this code part*/}
-                            {this.state.openedListAction ?
-                                <div onClick={this.toggleListAction}>
-                                    <input type="text" style={styles.nameInput} placeholder='Ввести заголовок списка'
-                                           value={this.state.cardName} onChange={this.cardNameChange.bind(this)}/>
-                                    <button className='addColumn' onClick={this.addNewCard.bind(this)}>Добавить список
-                                    </button>
-                                    <img src={cancel} className='cancelClass' alt="cancelCard"
-                                         onClick={this.toggleListAction}
-                                    />
-                                </div> : ''
-                            }
-                            <p onClick={this.toggleListAction} className={'addCard'}>+ Добавьте еще одну колонку</p>
-                        </div>
+                        <NewListComponent  data={this.state.listName} showComponent={this.state.showComponent}/>
+                        {this.state.openedListAction ? <AddNewListComponent clickToggleList={this.toggleListAction} createList={this.createLists}/> :
+                            <NewListButtonComponent clickToggleList={this.toggleListAction}/>}
                     </div>
                 </div>
             </div>

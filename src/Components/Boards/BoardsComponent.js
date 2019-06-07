@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import CreateNewBoard from './CreateNewBoard';
 import {Link} from "react-router-dom";
 
-class Boards extends Component {
+class BoardsComponent extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             showComponent: false,
             name: '',
-            lists: [],
+            boards: [],
         };
 
         this.InputChangeHandler = this.InputChangeHandler.bind(this);
@@ -17,20 +17,20 @@ class Boards extends Component {
     }
 
     CreateBoard() {
-        let lists = this.state.lists;
-        let checking = lists.filter((list) => {
-            return list.name === this.state.name;
+        let boards = this.state.boards;
+        let checking = boards.filter((board) => {
+            return board.name === this.state.name;
         });
 
         if (!checking.length) {
-            lists.push({
-                id: this.state.lists.length,
+            boards.push({
+                id: this.state.boards.length,
                 name: this.state.name
             });
             this.setState({
                 // ...this.state,
                 showComponent: true,
-                lists: lists,
+                boards: boards,
             });
         } else {
             alert('mi ara');
@@ -50,11 +50,11 @@ class Boards extends Component {
         return (
             <div>
                 {
-                    this.state.lists.map((list) => {
+                    this.state.boards.map((board) => {
                         return (
-                            <Link key={list.id} to={`list/${list.name}/${list.id}`}>
+                            <Link key={board.id} to={`list/${board.name}/${board.id}`}>
                                 <CreateNewBoard name={this.state.name} showComponent={this.state.showComponent}
-                                                data={list}/>
+                                                data={board}/>
                             </Link>
                         )
                     })
@@ -68,5 +68,5 @@ class Boards extends Component {
 
 }
 
-export default Boards;
+export default BoardsComponent;
 
