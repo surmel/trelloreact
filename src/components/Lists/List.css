@@ -65,7 +65,7 @@
     overflow: hidden;
 }
 .changedHeight{
-    height: 67px;
+    height: 73px;
     transition: height 0.1s;
 }
 .addColumn{
@@ -93,4 +93,13 @@
 .addCard {
     margin: 0;
     text-align: center;
+}
+
+.listCss {
+    background-color: #dfe1e6;
+    height: 80px;
+    width: 90px;
+    margin: 5px;
+    border-radius: 3px;
+
 }

@@ -13,8 +13,8 @@ class BackgroundComponent extends React.Component {
     render() {
         return (
             <div>
-                <div className="imagesButton" onClick={(e) => this.onClickHandler(e, 'changeImage')}></div>
-                <div className="colorsButton" onClick={(e) => this.onClickHandler(e, 'changeColor')}></div>
+                <div className="imagesButton" onClick={(e) => this.onClickHandler(e, 'changeImage')} style={{ cursor: 'pointer' }} />
+                <div className="colorsButton" onClick={(e) => this.onClickHandler(e, 'changeColor')} style={{ cursor: 'pointer' }} />
             </div>
         );
     }

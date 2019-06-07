@@ -20,7 +20,7 @@ class ChangeBackgroundColorComponent extends React.Component {
         return (
             <div>
                 {colors.map((color, index)=> {
-                   return  <div key={index} className="colorBlock" style={{backgroundColor: color}} onClick={() => this.backgroundColorHandler(color)}></div>;
+                   return  <div key={index} className="colorBlock" style={{backgroundColor: color, cursor: 'pointer'}} onClick={() => this.backgroundColorHandler(color)}></div>;
                 })}
             </div>
         );

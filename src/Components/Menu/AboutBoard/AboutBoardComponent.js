@@ -1,9 +1,7 @@
 import React from 'react';
 
 class AboutBoardComponent extends React.Component {
-    constructor (props){
-        super(props);
-    }
+
 
     render() {
         return (

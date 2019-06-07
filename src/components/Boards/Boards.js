@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import CreateNewBoard from './CreateNewBoard';
 import {Link} from "react-router-dom";
-import MenuComponent from "../Menu/MenuComponent";
 
 class Boards extends Component {
 
@@ -23,13 +22,13 @@ class Boards extends Component {
             return list.name === this.state.name;
         });
 
-        if (checking.length === 0) {
+        if (!checking.length) {
             lists.push({
                 id: this.state.lists.length,
                 name: this.state.name
             });
             this.setState({
-                ...this.state,
+                // ...this.state,
                 showComponent: true,
                 lists: lists,
             });
@@ -41,7 +40,7 @@ class Boards extends Component {
 
     InputChangeHandler(event) {
         this.setState({
-                ...this.state,
+                // ...this.state,
                 name: event.target.value
             }
         )

@@ -19,7 +19,7 @@ class ChangeBackgroundImageComponent extends React.Component {
         return (
             <div>
                 {images.map((image, index)=> {
-                    return  <div key={index} className="colorBlock" style={{backgroundImage: "url(" + image + ")"}} onClick={() => this.backgroundColorHandler(image)}></div>;
+                    return  <div key={index} className="colorBlock" style={{backgroundImage: "url(" + image + ")", cursor: 'pointer'}} onClick={() => this.backgroundColorHandler(image)}></div>;
                 })}
             </div>
         );

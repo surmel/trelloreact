@@ -48,7 +48,6 @@ class MenuComponent extends React.Component {
     }
 
     onOpenMenuContentHandler(e, key) {
-        e.persist();
         let currentMenu = this.state.currentMenu;
         this.setState({
             prevMenu: currentMenu,
@@ -88,12 +87,13 @@ class MenuComponent extends React.Component {
 
     turnOffAllMenus() {
         let newState = {};
+        let newValues = {};
         let menuItems = this.state.menuItems;
-        Object.keys(menuItems).map((key) => {
-            let newValues = {
+        Object.keys(menuItems).forEach((key) => {
+             newValues = {
                 ...this.state.menuItems[key],
                 opened: false
-            }
+            };
             newState[key] = newValues;
         });
 
@@ -102,11 +102,11 @@ class MenuComponent extends React.Component {
     }
 
     onToggleHandler(e) {
-        e.persist();
+        // e.persist();
         if (this.state.mode === 'open') {
             let newState = this.turnOffAllMenus();
             this.setState({
-                ...this.state,
+                // ...this.state,
                 style: 'slideRight sideMenu',
                 mode: 'closed',
                 menuTitle: 'Menu',
@@ -155,7 +155,7 @@ class MenuComponent extends React.Component {
 
     onThumbnailChangeHandler(newBack){
         this.setState({
-            ...this.state,
+            // ...this.state,
             bodyBackground: newBack
         });
     }
@@ -165,7 +165,7 @@ class MenuComponent extends React.Component {
         const previousMenu = this.state.prevMenu;
         return (
             <div>
-                <span className="menuButton" onClick={this.onToggleHandler}>Menu</span>
+                <span className="menuButton" style={{ cursor: 'pointer' }} onClick={this.onToggleHandler}>Menu</span>
                 <div className={this.state.style}>
                     <div className="menuHeader row">
                         <div className='col-md text-left'>
@@ -174,11 +174,11 @@ class MenuComponent extends React.Component {
                             }
                         </div>
                         <div>{this.state.menuTitle}</div>
-                        <div className='col-md text-right' onClick={this.onToggleHandler}>X</div>
+                        <div className='col-md text-right' style={{ cursor: 'pointer' }} onClick={this.onToggleHandler}>X</div>
                     </div>
                     {
-                        mainMenu.opened ?
-                            <MainMenuComponent bodyBackground={this.state.bodyBackground} onMenuItemClickHandler={this.onOpenMenuContentHandler}/> : ''
+                        mainMenu.opened &&
+                            <MainMenuComponent bodyBackground={this.state.bodyBackground} onMenuItemClickHandler={this.onOpenMenuContentHandler}/>
                     }
                     {
                         backgroundMenu.opened ?
