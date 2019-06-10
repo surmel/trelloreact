@@ -24,13 +24,14 @@ const styles = {
 };
 
 
-class AddNewListComponent extends React.Component {
+class AddNewListNameComponent extends React.Component {
 
     render() {
         return (
+
             <div>
                 <div className='cardAdd changedHeight'>
-                    <input type="text" style={styles.nameInput} placeholder='Ввести заголовок списка'/>
+                    <input type="text" style={styles.nameInput} onChange={this.props.inputChangeHandler} placeholder='Ввести заголовок списка'/>
                     <button className='addColumn' onClick={this.props.createLists}>Add List</button>
                     <img src={cancel} className='cancelClass' alt="cancelCard" onClick={this.props.clickToggleList}/>
                 </div>
@@ -39,4 +40,4 @@ class AddNewListComponent extends React.Component {
     }
 }
 
-export default AddNewListComponent;
+export default AddNewListNameComponent;

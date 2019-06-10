@@ -3,7 +3,7 @@ import './App.css';
 import NavBar from './Components/NavBar/NavBar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Boards from "./Components/Boards/BoardsComponent";
-import ListComponent from "./Components/Lists/ListComponent";
+import MainListComponent from "./Components/Lists/MainListComponent";
 
 class App extends Component {
     render() {
@@ -12,7 +12,7 @@ class App extends Component {
                 <NavBar/>
                 <Switch>
                     <Route exact path='/' component={Boards}/>
-                    <Route  path='/list/:name/:id' component={ListComponent}/>
+                    <Route  path='/list/:name/:id' component={MainListComponent}/>
                 </Switch>
             </Router>
         );

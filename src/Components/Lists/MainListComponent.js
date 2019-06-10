@@ -1,17 +1,17 @@
 import React from 'react';
 import './css/List.css';
 import constLists from './constList'
+import constTicket from './constTicket'
 import MenuComponent from "../Menu/MenuComponent";
 
 import NewListButtonComponent from './NewListButtonComponent';
-import AddNewListComponent from "./AddNewListComponent";
-import NewListComponent from "./NewListComponent";
+import AddNewListNameComponent from "./AddNewListNameComponent";
+import ListsComponent from "./ListsComponent";
 
 const styles = {
     container: {
         padding: '10px'
     },
-
     nameInput: {
         width: '97%',
         borderRadius: '3px',
@@ -28,18 +28,20 @@ const styles = {
 
 };
 
-class ListComponent extends React.Component {
+class MainListComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             showComponent: false,
             openedListAction: false,
-            lists: [],
+            lists: constLists,
+            tickets: constTicket,
             listName: ''
         };
         // binding events
         this.toggleListAction = this.toggleListAction.bind(this);
         this.createLists = this.createLists.bind(this);
+        this.InputChangeHandler = this.InputChangeHandler.bind(this);
     }
 
     toggleListAction(e) {
@@ -50,18 +52,28 @@ class ListComponent extends React.Component {
 
     createLists() {
         let lists = this.state.lists;
+        if (this.state.listName.length) {
+            lists.push({
+                id: this.state.lists.length,
+                name: this.state.listName
+            });
+            this.setState({
+                showComponent: true,
+                lists: lists,
+            });
 
-        lists.push({
-            id: this.state.lists.length,
-            name: this.state.listName
-        });
-        this.setState({
-            // ...this.state,
-            showComponent: true,
-            lists: lists,
-        });
+        } else {
+            alert('lav ches anum')
+        }
+
     }
 
+    InputChangeHandler(event) {
+        this.setState({
+                listName: event.target.value
+            }
+        )
+    }
 
     render() {
         return (
@@ -71,16 +83,10 @@ class ListComponent extends React.Component {
                 </div>
                 <div className='container-fluid'>
                     <div className='row'>
-                        {constLists.map((value, index) => {
-                            return (
-                                <div key={value.id} className='col-md listCss'>
-                                    <span>{value.id}</span>
-                                    <span>{value.name}</span>
-                                </div>
-                            )
-                        })}
-                        <NewListComponent  data={this.state.listName} showComponent={this.state.showComponent}/>
-                        {this.state.openedListAction ? <AddNewListComponent clickToggleList={this.toggleListAction} createList={this.createLists}/> :
+                        <ListsComponent lists={this.state.lists} />
+                        {this.state.openedListAction ? <AddNewListNameComponent clickToggleList={this.toggleListAction}
+                                                                                createLists={this.createLists}
+                                                                                inputChangeHandler={this.InputChangeHandler}/> :
                             <NewListButtonComponent clickToggleList={this.toggleListAction}/>}
                     </div>
                 </div>
@@ -90,4 +96,4 @@ class ListComponent extends React.Component {
 }
 
 
-export default ListComponent;
+export default MainListComponent;

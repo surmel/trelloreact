@@ -28,7 +28,6 @@ class BoardsComponent extends Component {
                 name: this.state.name
             });
             this.setState({
-                // ...this.state,
                 showComponent: true,
                 boards: boards,
             });
@@ -40,7 +39,6 @@ class BoardsComponent extends Component {
 
     InputChangeHandler(event) {
         this.setState({
-                // ...this.state,
                 name: event.target.value
             }
         )
