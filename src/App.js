@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import NavBar from './Components/NavBar/NavBar';
+import NavBar from "./Components/NavBar/NavBar";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Boards from "./Components/Boards/BoardsComponent";
 import MainListComponent from "./Components/Lists/MainListComponent";
