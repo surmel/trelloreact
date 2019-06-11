@@ -97,9 +97,20 @@
 
 .listCss {
     background-color: #dfe1e6;
-    height: 80px;
+    height: auto;
     width: 90px;
     margin: 5px;
     border-radius: 3px;
+    padding: 0;
+
+}
+
+.ticket{
+    padding:6px;
+}
+
+.ticket:hover {
+    background-color: darkgrey;
+    cursor: pointer;
 
 }
