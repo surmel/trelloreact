@@ -1,0 +1,113 @@
+.sideMenu {
+    position: absolute;
+    background: #fff;
+    height: 99vh;
+    width: 20vw;
+    right: 0px;
+    padding: 10px;
+
+}
+body {
+    background: #cccccc;
+    overflow: hidden;
+}
+
+.slideRight {
+    transition: 0.5s all ease;
+    right: -22vw;
+}
+
+.slideLeft {
+    transition: 0.5s all ease;
+    right: 0;
+    z-index: 10;
+}
+.menuButton{
+    float: right;
+    padding: 6px;
+    font-size: 20px;
+}
+.menuHeader{
+    text-align: center;
+    font-weight: 600;
+    display: block;
+    border-bottom: 1px solid #000;
+    padding: 0px 10px 10px 10px;
+    margin-left: -10px !important;
+
+}
+
+.backButton {
+    font-size: 24px;
+    float: left;
+    cursor: pointer;
+}
+.menuItem{
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px auto;
+}
+.menuItem:hover {
+    background: rgba(9,30,66,.13);
+}
+.colorsButton {
+    background-image: url(https://a.trellocdn.com/prgb/dist/images/colors@2x.864f4df15d825e89e199.jpg);
+    height: 90px;
+    width: 45%;
+    background-size: cover;
+    border-radius: 7px;
+    margin-top: 10px;
+    float: right;
+}
+.imagesButton {
+    background-image: url(https://a.trellocdn.com/prgb/dist/images/photos-thumbnail@3x.48948499e309aef794d7.jpg);
+    height: 90px;
+    width: 45%;
+    background-size: cover;
+    border-radius: 7px;
+    margin-top: 10px;
+    float: left;
+}
+.colorBlock {
+    height: 90px;
+    width: 45%;
+    background-size: cover;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+}
+
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.menuButton{
+    display: inline-block;
+    color:#fff;
+    font-weight: 700;
+}
+.menuButton:hover{
+    background: rgba(9,30,66,.13);
+}
+.backgroundThumb {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    background-size: cover !important;
+    background-position: center !important;
+    float: left;
+    margin-right: 10px;
+    border-radius: 5px;
+}

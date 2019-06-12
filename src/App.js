@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import NavBar from "./components/NavBar/NavBar";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Boards from "./components/boards/BoardsComponent";
+import Boards from "./components/Boards/BoardsComponent";
 import MainListComponent from "./components/Lists/MainListComponent";
 
 class App extends Component {

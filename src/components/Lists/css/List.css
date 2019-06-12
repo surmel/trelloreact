@@ -1,0 +1,116 @@
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.width-10 {
+    width: 10%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+.transition {
+    transition: height 2s;
+}
+
+.cardAdd {
+    background-color: #0000001f;
+    cursor: pointer;
+    color: #fff;
+    height: 32px;
+    width: 264px;
+    padding: 4px;
+    transition: height 0.2s;
+    overflow: hidden;
+}
+.changedHeight{
+    height: 73px;
+    transition: height 0.1s;
+}
+.addColumn{
+    padding: 4px 12px;
+    margin: 4px 0;
+    background-color: #5aac44;
+    box-shadow: 0 1px 0 0 #3f6f21;
+    border: none;
+    color: #fff;
+    float: left;
+    min-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    outline-color: transparent;
+}
+.cancelClass{
+    width: 20px;
+    height: 40px;
+    margin-left: 10px;
+}
+.addCard {
+    margin: 0;
+    text-align: center;
+}
+
+.listCss {
+    background-color: #dfe1e6;
+    height: auto;
+    width: 90px;
+    margin: 5px;
+    border-radius: 3px;
+    padding: 0;
+
+}
+
+.ticket{
+    padding:6px;
+}
+
+.ticket:hover {
+    background-color: darkgrey;
+    cursor: pointer;
+
+}
