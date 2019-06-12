@@ -1,0 +1,33 @@
+.links {
+    text-decoration: none;
+}
+
+.board-name {
+    width: -webkit-fill-available;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 340%;
+    overflow: overlay;
+}
+
+.boards {
+    float: left;
+    color: black;
+    margin: 19px;
+    height: 150px;
+    width: 18%;
+    background-color: gainsboro;
+    border-radius: 5px;
+}
+
+.new-board {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.new-board-btn {
+    margin-top: 10px;
+    width: 15%;
+    height: 70px;
+}
