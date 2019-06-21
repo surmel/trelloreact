@@ -13,8 +13,6 @@ class TicketsComponent extends React.Component {
                         <div key={index}>
                             <div style={{padding: '10px'}}>{value.name}</div>
                         </div>
-
-
                     )
                 })}
             </React.Fragment>
