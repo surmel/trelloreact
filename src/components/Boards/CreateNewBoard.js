@@ -1,10 +1,11 @@
 import React from 'react';
+import './Boards.css';
 
 const CreateNewBoard = (props) => {
     const NewBoard = (
-        <div id={props.data.id}>
+        <div id={props.data.id} className="boards">
             {
-                props.showComponent && <h3>{props.data.name}</h3>
+                <h3 className="board-name">{props.data.name}</h3>
             }
         </div>
     );

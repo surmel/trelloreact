@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from "react-redux";
 import AddNewListNameComponent from "./AddNewListNameComponent";
-import NewListButtonComponent from "../Components/Lists/NewListButtonComponent";
-import '../Components/Lists/css/List.css';
+import NewListButtonComponent from "../components/Lists/NewListButtonComponent";
+import '../components/Lists/css/List.css';
 
 class ListsComponent extends React.Component {
 

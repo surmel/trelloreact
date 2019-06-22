@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Boards.css';
 import CreateNewBoard from './CreateNewBoard';
 import {Link} from "react-router-dom";
 
@@ -7,13 +8,22 @@ class BoardsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showComponent: false,
             name: '',
             boards: [],
         };
 
         this.InputChangeHandler = this.InputChangeHandler.bind(this);
         this.CreateBoard = this.CreateBoard.bind(this)
+    }
+
+    componentDidMount() {
+        const boardList = localStorage.getItem('Boards');
+        if (boardList) {
+            console.log(boardList);
+            this.setState({
+                boards: JSON.parse(boardList)
+            });
+        }
     }
 
     CreateBoard() {
@@ -32,9 +42,10 @@ class BoardsComponent extends Component {
                 boards: boards,
             });
         } else {
-            alert('mi ara');
+            alert('This board already exists');
             return;
         }
+        localStorage.setItem('Boards', JSON.stringify(this.state.boards))
     }
 
     InputChangeHandler(event) {
@@ -48,21 +59,25 @@ class BoardsComponent extends Component {
         return (
             <div>
                 {
-                    this.state.boards.map((board) => {
+                    this.state.boards ? this.state.boards.map((board) => {
                         return (
                             <Link key={board.id} to={`list/${board.name}/${board.id}`}>
                                 <CreateNewBoard name={this.state.name} showComponent={this.state.showComponent}
                                                 data={board}/>
                             </Link>
                         )
-                    })
+                    }) : null
                 }
+                <div className="new-board">
+                    <input onChange={this.InputChangeHandler} placeholder="Board name" className="form-control"/>
+                    <button onClick={this.CreateBoard} className="btn btn-secondary new-board-btn">Create new board
+                    </button>
+                </div>
 
-                <input onChange={this.InputChangeHandler} placeholder="Board name"/>
-                <button onClick={this.CreateBoard} className="btn btn-secondary">Create new board</button>
             </div>
         )
     }
+
 
 }
 

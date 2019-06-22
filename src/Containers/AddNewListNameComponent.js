@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Components/Lists/css/List.css';
+import '../components/Lists/css/List.css';
 import {connect} from "react-redux";
 import {addList} from "../Actions/lists";
 import cancel from '../Images/cancel-music.svg';
