@@ -3,13 +3,13 @@ import './Boards.css';
 import CreateNewBoard from './CreateNewBoard';
 import {Link} from "react-router-dom";
 
-class Boards extends Component {
+class BoardsComponent extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            lists: [],
+            boards: [],
         };
 
         this.InputChangeHandler = this.InputChangeHandler.bind(this);
@@ -17,40 +17,39 @@ class Boards extends Component {
     }
 
     componentDidMount() {
-        const BoardList = localStorage.getItem('Boards');
-        if(BoardList) {
+        const boardList = localStorage.getItem('Boards');
+        if (boardList) {
+            console.log(boardList);
             this.setState({
-                lists: JSON.parse(BoardList)
+                boards: JSON.parse(boardList)
             });
-            console.log(this.state.lists)
         }
     }
 
     CreateBoard() {
-        let lists = this.state.lists;
-        let checking = lists.filter((list) => {
-            return list.name === this.state.name;
+        let boards = this.state.boards;
+        let checking = boards.filter((board) => {
+            return board.name === this.state.name;
         });
 
         if (!checking.length) {
-            lists.push({
-                id: this.state.lists.length,
+            boards.push({
+                id: this.state.boards.length,
                 name: this.state.name
             });
             this.setState({
-                // ...this.state,
-                lists: lists,
+                showComponent: true,
+                boards: boards,
             });
         } else {
             alert('This board already exists');
             return;
         }
-        localStorage.setItem('Boards', JSON.stringify(this.state.lists))
+        localStorage.setItem('Boards', JSON.stringify(this.state.boards))
     }
 
     InputChangeHandler(event) {
         this.setState({
-                // ...this.state,
                 name: event.target.value
             }
         )
@@ -60,17 +59,19 @@ class Boards extends Component {
         return (
             <div>
                 {
-                    this.state.lists.map((list) => {
+                    this.state.boards ? this.state.boards.map((board) => {
                         return (
-                            <Link key={list.id} to={`list/${list.name}/${list.id}`} className="links">
-                                <CreateNewBoard name={this.state.name} data={list}/>
+                            <Link key={board.id} to={`list/${board.name}/${board.id}`}>
+                                <CreateNewBoard name={this.state.name} showComponent={this.state.showComponent}
+                                                data={board}/>
                             </Link>
                         )
-                    })
+                    }) : null
                 }
                 <div className="new-board">
                     <input onChange={this.InputChangeHandler} placeholder="Board name" className="form-control"/>
-                    <button onClick={this.CreateBoard} className="btn btn-secondary new-board-btn">Create new board</button>
+                    <button onClick={this.CreateBoard} className="btn btn-secondary new-board-btn">Create new board
+                    </button>
                 </div>
 
             </div>
@@ -80,5 +81,5 @@ class Boards extends Component {
 
 }
 
-export default Boards;
+export default BoardsComponent;
 
