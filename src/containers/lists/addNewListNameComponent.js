@@ -1,8 +1,8 @@
 import React from 'react';
-import '../components/Lists/css/List.css';
+import '../../components/lists/css/List.css';
 import {connect} from "react-redux";
-import {addList} from "../Actions/lists";
-import cancel from '../Images/cancel-music.svg';
+import {addList} from "../../actions/lists/lists";
+import cancel from '../../Images/cancel-music.svg';
 
 const styles = {
     nameInput: {
@@ -30,7 +30,6 @@ class AddNewListNameComponent extends React.Component {
             listName: ''
         };
         // binding events
-        this.toggleListAction = this.toggleListAction.bind(this);
         this.createLists = this.createLists.bind(this);
         this.inputChangeHandler = this.inputChangeHandler.bind(this);
     }
@@ -54,19 +53,15 @@ class AddNewListNameComponent extends React.Component {
         )
     }
 
-    toggleListAction() {
-        this.setState({
-            openedListAction: !this.state.openedListAction
-        })
-    }
     render() {
         return (
 
             <div>
                 <div className='cardAdd changedHeight'>
-                    <input type="text" id="listNameInput" style={styles.nameInput} onChange={this.inputChangeHandler} placeholder='Ввести заголовок списка'/>
+                    <input type="text" id="listNameInput" style={styles.nameInput} onChange={this.inputChangeHandler}
+                           placeholder='Ввести заголовок списка'/>
                     <button className='addColumn' onClick={this.createLists}>Add List</button>
-                    <img src={cancel} className='cancelClass' alt="cancelCard" onClick={this.toggleListAction}/>
+                    <img src={cancel} className='cancelClass' alt="cancelCard" onClick={this.props.clickToggleList}/>
                 </div>
             </div>
         )

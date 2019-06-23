@@ -1,4 +1,4 @@
-import * as listsActions from '../Constants/lists';
+import * as listsActions from '../../constants/list/lists';
 
 const initialState = [];
 

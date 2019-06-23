@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Boards.css';
-import CreateNewBoard from './CreateNewBoard';
+import CreateNewBoard from './createNewBoard';
 import {Link} from "react-router-dom";
 
 class BoardsComponent extends Component {
@@ -19,7 +19,6 @@ class BoardsComponent extends Component {
     componentDidMount() {
         const boardList = localStorage.getItem('Boards');
         if (boardList) {
-            console.log(boardList);
             this.setState({
                 boards: JSON.parse(boardList)
             });

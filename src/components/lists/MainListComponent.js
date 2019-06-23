@@ -1,11 +1,7 @@
 import React from 'react';
 import './css/List.css';
-import constLists from './constList'
-import constTicket from './constTicket'
 import MenuComponent from "../Menu/MenuComponent";
-import NewListButtonComponent from './NewListButtonComponent';
-import AddNewListNameComponent from "../../Containers/AddNewListNameComponent";
-import ListsComponent from "../../Containers/ListsComponent";
+import ListsComponent from "../../containers/lists/listsComponent";
 
 const styles = {
     container: {
