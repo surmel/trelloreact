@@ -1,13 +1,14 @@
 import React from 'react';
 import colors from './BackgroundsData/ColorsData';
+
 class ChangeBackgroundColorComponent extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.backgroundColorHandler = this.backgroundColorHandler.bind(this);
     }
 
-    backgroundColorHandler(color){
+    backgroundColorHandler(color) {
         localStorage.setItem('userBackground', color);
         localStorage.setItem('backgroundType', 'color');
         document.body.style.backgroundImage = 'none';
@@ -19,8 +20,9 @@ class ChangeBackgroundColorComponent extends React.Component {
     render() {
         return (
             <div>
-                {colors.map((color, index)=> {
-                   return  <div key={index} className="colorBlock" style={{backgroundColor: color, cursor: 'pointer'}} onClick={() => this.backgroundColorHandler(color)}></div>;
+                {colors.map((color, index) => {
+                    return <div key={index} className="colorBlock" style={{backgroundColor: color, cursor: 'pointer'}}
+                                onClick={() => this.backgroundColorHandler(color)}></div>;
                 })}
             </div>
         );

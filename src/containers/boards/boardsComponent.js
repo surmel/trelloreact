@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './Boards.css';
 import CreateNewBoard from './createNewBoard';
 import {Link} from "react-router-dom";
+import {showBoard, addBoard} from "../../actions/boards/boards";
+import {connect} from "react-redux";
 
 class BoardsComponent extends Component {
 
@@ -9,42 +11,40 @@ class BoardsComponent extends Component {
         super(props);
         this.state = {
             name: '',
-            boards: [],
+            localBoards: []
         };
 
         this.InputChangeHandler = this.InputChangeHandler.bind(this);
-        this.CreateBoard = this.CreateBoard.bind(this)
+        this.createBoard = this.createBoard.bind(this)
     }
 
     componentDidMount() {
         const boardList = localStorage.getItem('Boards');
         if (boardList) {
-            this.setState({
-                boards: JSON.parse(boardList)
-            });
+            this.props.showBoard(JSON.parse(boardList))
+        } else {
+            this.props.showBoard([])
         }
     }
 
-    CreateBoard() {
-        let boards = this.state.boards;
+    createBoard() {
+        let boards = this.props.showBoards;
         let checking = boards.filter((board) => {
             return board.name === this.state.name;
         });
-
-        if (!checking.length) {
-            boards.push({
-                id: this.state.boards.length,
-                name: this.state.name
-            });
-            this.setState({
-                showComponent: true,
-                boards: boards,
-            });
+        if (this.state.name.length) {
+            if (!checking.length) {
+                this.setState({
+                    showComponent: true,
+                    name: ''
+                });
+                this.props.addBoard(this.state.name);
+            } else {
+                alert('This board already exists');
+            }
         } else {
-            alert('This board already exists');
-            return;
+            alert('Please fill valid name');
         }
-        localStorage.setItem('Boards', JSON.stringify(this.state.boards))
     }
 
     InputChangeHandler(event) {
@@ -58,9 +58,9 @@ class BoardsComponent extends Component {
         return (
             <div>
                 {
-                    this.state.boards ? this.state.boards.map((board) => {
+                    this.props.showBoards ? this.props.showBoards.map((board, index) => {
                         return (
-                            <Link key={board.id} to={`list/${board.name}/${board.id}`}>
+                            <Link key={index} to={`list/${board.name}/${board.id}`}>
                                 <CreateNewBoard name={this.state.name} showComponent={this.state.showComponent}
                                                 data={board}/>
                             </Link>
@@ -68,8 +68,9 @@ class BoardsComponent extends Component {
                     }) : null
                 }
                 <div className="new-board">
-                    <input onChange={this.InputChangeHandler} placeholder="Board name" className="form-control"/>
-                    <button onClick={this.CreateBoard} className="btn btn-secondary new-board-btn">Create new board
+                    <input onChange={this.InputChangeHandler} placeholder="Board name" className="form-control"
+                           value={this.state.name}/>
+                    <button onClick={this.createBoard} className="btn btn-secondary new-board-btn">Create new board
                     </button>
                 </div>
 
@@ -80,5 +81,14 @@ class BoardsComponent extends Component {
 
 }
 
-export default BoardsComponent;
+// export default BoardsComponent;
+const mapsStateToProps = state => ({
+    showBoards: state.boards,
+    addBoards: state.boards
+});
+const mapsDispatchToProps = dispatch => ({
+    showBoard: (name) => dispatch(showBoard(name)),
+    addBoard: (name) => dispatch(addBoard(name))
+});
 
+export default connect(mapsStateToProps, mapsDispatchToProps)(BoardsComponent);
