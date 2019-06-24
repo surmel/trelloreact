@@ -72,7 +72,7 @@ const mapsStateToProps = state => ({
     lists: state.lists
 });
 const mapsDispatchToProps = dispatch => ({
-    addList: (name) => dispatch(addList({name}))
+    addList: (name) => dispatch(addList(name)),
 });
 
 export default connect(mapsStateToProps, mapsDispatchToProps)(AddNewListNameComponent);

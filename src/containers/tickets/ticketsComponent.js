@@ -1,5 +1,5 @@
 import React from 'react'
-import constTicket from './constTicket'
+import constTicket from '../../components/lists/constTicket'
 
 class TicketsComponent extends React.Component {
 

@@ -3,6 +3,9 @@ import {connect} from "react-redux";
 import AddNewListNameComponent from "./addNewListNameComponent";
 import NewListButtonComponent from "../../components/lists/NewListButtonComponent";
 import '../../components/lists/css/List.css';
+import {openNewTicket} from '../../actions/lists/lists';
+import AddNewTicketNameComponent from "../tickets/addNewTicketNameComponent";
+import NewTicketButtonComponent from "../../components/tickets/newTicketButtonComponent";
 
 class ListsComponent extends React.Component {
 
@@ -14,6 +17,7 @@ class ListsComponent extends React.Component {
             lists: [],
         };
         this.toggleListAction = this.toggleListAction.bind(this);
+        this.toggleTicketsAction = this.toggleTicketsAction.bind(this);
     }
 
     toggleListAction() {
@@ -22,23 +26,37 @@ class ListsComponent extends React.Component {
         })
     }
 
+    toggleTicketsAction(index, id) {
+        let ticketId = id;
+        let bool = !this.props.lists[index].addNewTicketInput;
+        this.props.openNewTicket(ticketId, bool)
+    }
+
     render() {
+        console.log(this.props);
         return (
             <React.Fragment>
                 {
 
                     this.props.lists ? this.props.lists.map((value, index) => {
                         return (
-                            <div key={value.id} className='listCss' style={{padding: '0'}}>
+                            <div key={index} className='listCss' style={{padding: '0'}}>
                                 <div style={{padding: '10px'}}>{value.name}</div>
-                                {/*<TicketsComponent listId={value.id}/>*/}
-                                <div className='ticket'>+Add a card</div>
+                                {
+                                    this.props.lists[index].addNewTicketInput ?
+                                        <AddNewTicketNameComponent id={value.id} index={index}
+                                                                   clickToggleTicket={this.toggleTicketsAction}/> :
+                                        <NewTicketButtonComponent id={value.id} index={index}
+                                                                  clickToggleTicket={this.toggleTicketsAction}/>
+                                }
+
                             </div>
                         )
                     }) : null
                 }
                 {
-                    this.state.openedListAction ? <AddNewListNameComponent clickToggleList={this.toggleListAction} allLists={this.state.lists}/> :
+                    this.state.openedListAction ?
+                        <AddNewListNameComponent clickToggleList={this.toggleListAction} allLists={this.state.lists}/> :
                         <NewListButtonComponent clickToggleList={this.toggleListAction}/>
                 }
             </React.Fragment>
@@ -47,7 +65,11 @@ class ListsComponent extends React.Component {
 }
 
 const mapsStateToProps = state => ({
-    lists: state.lists
+    lists: state.lists,
+    tickets: state.tickets
+});
+const mapsDispatchToProps = dispatch => ({
+    openNewTicket: (id, bool) => dispatch(openNewTicket(id, bool))
 });
 
-export default connect(mapsStateToProps)(ListsComponent);
+export default connect(mapsStateToProps, mapsDispatchToProps)(ListsComponent);
