@@ -28,14 +28,13 @@ class BoardsComponent extends Component {
     }
 
     createBoard() {
-        let boards = this.props.showBoards;
+        let boards = this.props.boards;
         let checking = boards.filter((board) => {
             return board.name === this.state.name;
         });
         if (this.state.name.length) {
             if (!checking.length) {
                 this.setState({
-                    showComponent: true,
                     name: ''
                 });
                 this.props.addBoard(this.state.name);
@@ -58,10 +57,10 @@ class BoardsComponent extends Component {
         return (
             <div>
                 {
-                    this.props.showBoards ? this.props.showBoards.map((board, index) => {
+                    this.props.boards ? this.props.boards.map((board, index) => {
                         return (
                             <Link key={index} to={`list/${board.name}/${board.id}`}>
-                                <CreateNewBoard name={this.state.name} showComponent={this.state.showComponent}
+                                <CreateNewBoard name={this.state.name}
                                                 data={board}/>
                             </Link>
                         )
@@ -81,10 +80,8 @@ class BoardsComponent extends Component {
 
 }
 
-// export default BoardsComponent;
 const mapsStateToProps = state => ({
-    showBoards: state.boards,
-    addBoards: state.boards
+    boards: state.boards,
 });
 const mapsDispatchToProps = dispatch => ({
     showBoard: (name) => dispatch(showBoard(name)),
