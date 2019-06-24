@@ -1,10 +1,11 @@
-import * as listsActions from '../Constants/lists';
+import * as listsActions from '../../constants/list/lists';
 
 const initialState = [];
 
 export default function lists(state = initialState, action){
     switch (action.type) {
         case listsActions.ADD_LIST:
+        {
             let id = state.length + 1;
             return [
                 ...state,
@@ -13,6 +14,7 @@ export default function lists(state = initialState, action){
                     name: action.data.name,
                 }
             ];
+        }
         default:
             return state;
     }

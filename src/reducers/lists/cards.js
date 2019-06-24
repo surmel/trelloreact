@@ -1,4 +1,4 @@
-import * as cardsActions from "../Constants/cards";
+import * as cardsActions from "../../constants/list/cards";
 
 const initialState = [];
 

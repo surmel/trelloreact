@@ -13,7 +13,7 @@ class NavBar extends React.Component {
                     <Link to='/'>
                         <button className='homeButton1'><img src={homeButton} id='homeButton' alt=''/></button>
                     </Link>
-                    <Link to='/asd'>
+                    <Link to='/boards'>
                         <div className='board1'>
                             <button className='board'><img src={board} alt=''/> Boards</button>
                         </div>
