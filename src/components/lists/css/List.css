@@ -64,6 +64,16 @@
     transition: height 0.2s;
     overflow: hidden;
 }
+.cardAddName {
+    background-color: #0000001f;
+    cursor: pointer;
+    color: #fff;
+    height: 32px;
+    width: 100%;
+    padding: 4px;
+    transition: height 0.2s;
+    overflow: hidden;
+}
 .changedHeight{
     height: 73px;
     transition: height 0.1s;

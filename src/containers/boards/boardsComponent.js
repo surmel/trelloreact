@@ -4,6 +4,11 @@ import CreateNewBoard from './createNewBoard';
 import {Link} from "react-router-dom";
 import {showBoard, addBoard} from "../../actions/boards/boards";
 import {connect} from "react-redux";
+import board from '../../Images/board.svg'
+import pulse from '../../Images/5fd1b4ba8b.png'
+import Col from 'react-bootstrap/Col'
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 class BoardsComponent extends Component {
 
@@ -55,25 +60,52 @@ class BoardsComponent extends Component {
 
     render() {
         return (
-            <div>
-                {
-                    this.props.boards ? this.props.boards.map((board, index) => {
-                        return (
-                            <Link key={index} to={`list/${board.name}/${board.id}`}>
-                                <CreateNewBoard name={this.state.name}
-                                                data={board}/>
+            <Container style={{marginTop: '50px'}}>
+                <Col md={12}>
+                    <Row>
+                        <Col md={2}>
+                            <Link to='/boards' style={{textDecoration: 'none'}}>
+                                <div className='board' style={{
+                                    background: '#e4f0f6',
+                                    width: '100%'
+                                }}>
+                                    <img src={board} alt='' style={{width: '20px'}}/>
+                                    <div style={{fontSize: '14px', fontWeight: 'bold', flex: '1 1 auto'}}>Boards</div>
+                                </div>
                             </Link>
-                        )
-                    }) : null
-                }
-                <div className="new-board">
-                    <input onChange={this.InputChangeHandler} placeholder="Board name" className="form-control"
-                           value={this.state.name}/>
-                    <button onClick={this.createBoard} className="btn btn-secondary new-board-btn">Create new board
-                    </button>
-                </div>
+                                <Link to='/' style={{textDecoration: 'none'}}>
+                                    <div className='board' style={{
+                                        color: 'black',
+                                        width: '100%'
+                                    }}>
+                                        <img src={pulse} alt='' style={{width: '20px'}}/>
+                                        <div style={{fontSize: '14px', fontWeight: 'bold', flex: '1 1 auto'}}>Home</div>
+                                    </div>
+                                </Link>
+                        </Col>
+                        <Col md={10}>
+                            {
+                                this.props.boards ? this.props.boards.map((board, index) => {
+                                    return (
+                                        <Link key={index} to={`list/${board.name}/${board.id}`}>
+                                            <CreateNewBoard name={this.state.name}
+                                                            data={board}/>
+                                        </Link>
+                                    )
+                                }) : null
+                            }
+                            <Col md={3} className="new-board" style={{float: 'left'}}>
+                                <input  onChange={this.InputChangeHandler} placeholder="Board name" className="form-control"
+                                        value={this.state.name}/>
+                                <button onClick={this.createBoard} className="btn btn-secondary new-board-btn" style={{width: '100%'}}>Create new board
+                                </button>
+                            </Col>
+                        </Col>
 
-            </div>
+                    </Row>
+                </Col>
+
+            </Container>
         )
     }
 

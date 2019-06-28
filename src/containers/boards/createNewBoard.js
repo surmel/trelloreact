@@ -1,12 +1,13 @@
 import React from 'react';
 import './Boards.css';
+import Col from "react-bootstrap/Col";
 
 const CreateNewBoard = (props) => {
-    return <div id={props.data.id} className="boards">
+    return <Col md={2} id={props.data.id} className="boards">
             {
-                <h3 className="board-name">{props.data.name}</h3>
+                <span className="board-name">{props.data.name}</span>
             }
-        </div>
+        </Col>
 
 
 };

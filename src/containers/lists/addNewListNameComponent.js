@@ -42,7 +42,7 @@ class AddNewListNameComponent extends React.Component {
             });
             this.props.addList(newListName);
         } else {
-            alert('lav ches anum')
+            alert('Please enter valid name')
         }
     }
 
@@ -59,7 +59,7 @@ class AddNewListNameComponent extends React.Component {
             <div>
                 <div className='cardAdd changedHeight'>
                     <input type="text" id="listNameInput" style={styles.nameInput} onChange={this.inputChangeHandler}
-                           placeholder='Ввести заголовок списка'/>
+                           placeholder='Enter list title... '/>
                     <button className='addColumn' onClick={this.createLists}>Add List</button>
                     <img src={cancel} className='cancelClass' alt="cancelCard" onClick={this.props.clickToggleList}/>
                 </div>

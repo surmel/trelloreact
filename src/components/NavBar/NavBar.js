@@ -13,9 +13,12 @@ class NavBar extends React.Component {
                     <Link to='/'>
                         <button className='homeButton1'><img src={homeButton} id='homeButton' alt=''/></button>
                     </Link>
-                    <Link to='/boards'>
+                    <Link to='/boards' style={{ textDecoration: 'none'}}>
                         <div className='board1'>
-                            <button className='board'><img src={board} alt=''/> Boards</button>
+                            <button className='board'>
+                                <img src={board} alt='' style={{width: '20px'}}/>
+                                <div style={{fontSize: '14px',fontWeight: 'bold'}}>Boards</div>
+                            </button>
                         </div>
                     </Link>
                 </div>

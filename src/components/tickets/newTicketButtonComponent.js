@@ -11,7 +11,7 @@ class NewTicketButtonComponent extends React.Component {
     render() {
         return (
             <div>
-                <div className='cardAdd' onClick={this.indexFunction.bind(this)}>
+                <div className='cardAddName' onClick={this.indexFunction.bind(this)}>
                     <p className='addCard'>+ Add card</p>
                 </div>
             </div>
