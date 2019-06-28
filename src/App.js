@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
 import './App.css';
-
-import NavBar from './components/NavBar/NavBar';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Boards from "./components/Boards/Boards";
-import ListComponent from "./components/Lists/ListComponent";
 import NavBar from "./components/NavBar/NavBar";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import MainListComponent from "./components/lists/MainListComponent";
