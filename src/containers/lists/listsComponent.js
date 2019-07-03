@@ -6,7 +6,7 @@ import '../../components/lists/css/List.css';
 import {openNewTicket, showLists} from '../../actions/lists/lists';
 import AddNewTicketNameComponent from "../tickets/addNewTicketNameComponent";
 import NewTicketButtonComponent from "../../components/tickets/newTicketButtonComponent";
-import {withRouter} from "react-router";
+import {withRouter} from "react-router-dom";
 
 class ListsComponent extends React.Component {
 

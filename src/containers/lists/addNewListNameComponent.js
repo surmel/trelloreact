@@ -3,6 +3,7 @@ import '../../components/lists/css/List.css';
 import {connect} from "react-redux";
 import {addList} from "../../actions/lists/lists";
 import cancel from '../../Images/cancel-music.svg';
+import {withRouter} from "react-router-dom";
 
 const styles = {
     nameInput: {
@@ -37,10 +38,11 @@ class AddNewListNameComponent extends React.Component {
     createLists() {
         if (this.state.listName.length) {
             let newListName = this.state.listName;
+            let boardID = this.props.match.params.id;
             this.setState({
                 listName: ''
             });
-            this.props.addList(newListName);
+            this.props.addList(boardID, newListName);
         } else {
             alert('Please enter valid name')
         }
@@ -72,7 +74,7 @@ const mapsStateToProps = state => ({
     lists: state.lists
 });
 const mapsDispatchToProps = dispatch => ({
-    addList: (name) => dispatch(addList(name)),
+    addList: (boardId, name) => dispatch(addList(boardId, name)),
 });
 
-export default connect(mapsStateToProps, mapsDispatchToProps)(AddNewListNameComponent);
+export default withRouter(connect(mapsStateToProps, mapsDispatchToProps)(AddNewListNameComponent));

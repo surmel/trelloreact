@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar/NavBar";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import MainListComponent from "./components/lists/MainListComponent";
 import WelcomeComponent from   "./components/welcome/welcome";
-import Boards from "./containers/boards/boardsComponent";
+import BoardsComponent from "./containers/boards/boardsComponent";
 
 class App extends Component {
     render() {
@@ -13,7 +13,7 @@ class App extends Component {
                 <NavBar/>
                 <Switch>
                     <Route exact path='/' component={WelcomeComponent}/>
-                    <Route  path='/boards' component={Boards}/>
+                    <Route  path='/boards' component={BoardsComponent}/>
                     <Route path='/list/:name/:id' component={MainListComponent}/>
                 </Switch>
             </Router>

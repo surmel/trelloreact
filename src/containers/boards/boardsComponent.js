@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Boards.css';
 import CreateNewBoard from './createNewBoard';
 import {Link} from "react-router-dom";
-import {showBoard, addBoard} from "../../actions/boards/boards";
+import {addBoard} from "../../actions/boards/boards";
 import {connect} from "react-redux";
 import board from '../../Images/board.svg'
 import pulse from '../../Images/5fd1b4ba8b.png'
@@ -83,7 +83,7 @@ class BoardsComponent extends Component {
                             {
                                 this.props.boards ? this.props.boards.map((board, index) => {
                                     return (
-                                        <Link key={index} to={`list/${board.name}/${board.id}`} params={{name: board.name, id: board.id}}>
+                                        <Link key={index} to={`/list/${board.name}/${board.id}`} params={{name: board.name, id: board.id}}>
                                             <CreateNewBoard name={this.state.name}
                                                             data={board}/>
                                         </Link>
