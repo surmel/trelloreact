@@ -6,7 +6,7 @@ class AboutBoardComponent extends React.Component {
     render() {
         return (
             <div>
-                <p>vat es vladik???</p>
+                <p>How are you Volodya ???</p>
             </div>
         );
     }
