@@ -74,10 +74,10 @@ class MenuComponent extends React.Component {
         }
         if (localStorage.getItem('backgroundType') === 'image') {
             bodyBackground = "url(" + bodyBackground + ")";
-            document.body.style.backgroundImage = bodyBackground;
-            document.body.style.backgroundSize = 'cover';
+            document.getElementById('mainListBackground').style.backgroundImage = bodyBackground;
+            document.getElementById('mainListBackground').style.backgroundSize = 'cover';
         } else {
-            document.body.style.backgroundColor = bodyBackground;
+            document.getElementById('mainListBackground').style.backgroundColor = bodyBackground;
         }
         this.setState({
             ...this.state,

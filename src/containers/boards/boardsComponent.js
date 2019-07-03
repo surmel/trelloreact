@@ -9,6 +9,7 @@ import pulse from '../../Images/5fd1b4ba8b.png'
 import Col from 'react-bootstrap/Col'
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import {getBoardsAsync} from "../../thunks/boards.thunk";
 
 class BoardsComponent extends Component {
 
@@ -24,20 +25,7 @@ class BoardsComponent extends Component {
     }
 
     componentDidMount() {
-        let boardList = localStorage.getItem('Boards');
-        if (boardList) {
-            fetch('/boards/boards.json')
-                .then(response => response.json())
-                .then(result => {
-                    let boardsArray = (JSON.parse(boardList));
-                    result.map((board) => {
-                        return boardsArray.push(board);
-                    });
-                    this.props.showBoard(boardsArray)
-                });
-        } else {
-            this.props.showBoard([])
-        }
+        this.props.getBoardsAsync()
     }
 
     createBoard() {
@@ -126,7 +114,7 @@ const mapsStateToProps = state => ({
     boards: state.boards,
 });
 const mapsDispatchToProps = dispatch => ({
-    showBoard: (name) => dispatch(showBoard(name)),
+    getBoardsAsync: (name) => dispatch(getBoardsAsync(name)),
     addBoard: (name) => dispatch(addBoard(name))
 });
 
