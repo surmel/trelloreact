@@ -6,7 +6,7 @@ export const getBoardsAsync = (name) => {
         if (boardList) {
             dispatch(showBoard(JSON.parse(boardList)));
         } else {
-            fetch('http://localhost:3001/boards.json')
+            fetch('http://localhost:3001/boards/boards.json')
                 .then(res => {
                     return res.json();
                 })

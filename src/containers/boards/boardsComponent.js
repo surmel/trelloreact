@@ -59,7 +59,7 @@ class BoardsComponent extends Component {
             <Container style={{marginTop: '50px'}}>
                 <Col md={12}>
                     <Row>
-                        <Col md={2}>
+                        <Col md={2} style={{borderRight: '1px solid #ccc'}}>
                             <Link to='/boards' style={{textDecoration: 'none'}}>
                                 <div className='board' style={{
                                     background: '#e4f0f6',
@@ -69,21 +69,21 @@ class BoardsComponent extends Component {
                                     <div style={{fontSize: '14px', fontWeight: 'bold', flex: '1 1 auto'}}>Boards</div>
                                 </div>
                             </Link>
-                                <Link to='/' style={{textDecoration: 'none'}}>
-                                    <div className='board' style={{
-                                        color: 'black',
-                                        width: '100%'
-                                    }}>
-                                        <img src={pulse} alt='' style={{width: '20px'}}/>
-                                        <div style={{fontSize: '14px', fontWeight: 'bold', flex: '1 1 auto'}}>Home</div>
-                                    </div>
-                                </Link>
+                            <Link to='/' style={{textDecoration: 'none'}}>
+                                <div className='board' style={{
+                                    color: 'black',
+                                    width: '100%'
+                                }}>
+                                    <img src={pulse} alt='' style={{width: '20px'}}/>
+                                    <div style={{fontSize: '14px', fontWeight: 'bold', flex: '1 1 auto'}}>Home</div>
+                                </div>
+                            </Link>
                         </Col>
                         <Col md={10}>
                             {
                                 this.props.boards ? this.props.boards.map((board, index) => {
                                     return (
-                                        <Link key={index} to={`list/${board.name}/${board.id}`}>
+                                        <Link key={index} to={`list/${board.name}/${board.id}`} params={{name: board.name, id: board.id}}>
                                             <CreateNewBoard name={this.state.name}
                                                             data={board}/>
                                         </Link>
@@ -91,9 +91,11 @@ class BoardsComponent extends Component {
                                 }) : null
                             }
                             <Col md={3} className="new-board" style={{float: 'left'}}>
-                                <input  onChange={this.InputChangeHandler} placeholder="Board name" className="form-control"
-                                        value={this.state.name}/>
-                                <button onClick={this.createBoard} className="btn btn-secondary new-board-btn" style={{width: '100%'}}>Create new board
+                                <input onChange={this.InputChangeHandler} placeholder="Board name"
+                                       className="form-control"
+                                       value={this.state.name}/>
+                                <button onClick={this.createBoard} className="btn btn-secondary new-board-btn"
+                                        style={{width: '100%'}}>Create new board
                                 </button>
                             </Col>
                         </Col>

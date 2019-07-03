@@ -1,0 +1,27 @@
+[
+    {
+        "id": "2",
+        "boardId": "1",
+        "name": "Open"
+    },
+    {
+        "id": "3",
+        "boardId": "1",
+        "name": "In Progress"
+    },
+    {
+        "id": "4",
+        "boardId": "1",
+        "name": "Under Review"
+    },
+    {
+        "id": "5",
+        "boardId": "3",
+        "name": "Waiting For Merge"
+    },
+    {
+        "id": "6",
+        "boardId": "3",
+        "name": "Done"
+    }
+]

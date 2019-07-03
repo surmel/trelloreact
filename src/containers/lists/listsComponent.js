@@ -3,9 +3,10 @@ import {connect} from "react-redux";
 import AddNewListNameComponent from "./addNewListNameComponent";
 import NewListButtonComponent from "../../components/lists/NewListButtonComponent";
 import '../../components/lists/css/List.css';
-import {openNewTicket} from '../../actions/lists/lists';
+import {openNewTicket, showLists} from '../../actions/lists/lists';
 import AddNewTicketNameComponent from "../tickets/addNewTicketNameComponent";
 import NewTicketButtonComponent from "../../components/tickets/newTicketButtonComponent";
+import {withRouter} from "react-router";
 
 class ListsComponent extends React.Component {
 
@@ -32,14 +33,21 @@ class ListsComponent extends React.Component {
         this.props.openNewTicket(ticketId, bool)
     }
 
+    componentDidMount() {
+        fetch('/lists/lists.json')
+            .then(response => response.json())
+            .then(result => {
+                this.props.showLists(result)
+            });
+    }
+
     render() {
-        console.log(this.props);
         return (
             <React.Fragment>
                 {
-
                     this.props.lists ? this.props.lists.map((value, index) => {
                         return (
+                            this.props.match.params.id === value.boardId &&
                             <div key={index} className='listCss' style={{padding: '0'}}>
                                 <div style={{padding: '10px'}}>{value.name}</div>
                                 {
@@ -69,7 +77,8 @@ const mapsStateToProps = state => ({
     tickets: state.tickets
 });
 const mapsDispatchToProps = dispatch => ({
-    openNewTicket: (id, bool) => dispatch(openNewTicket(id, bool))
-});
+    openNewTicket: (id, bool) => dispatch(openNewTicket(id, bool)),
+    showLists: (name) => dispatch(showLists(name)),
 
-export default connect(mapsStateToProps, mapsDispatchToProps)(ListsComponent);
+});
+export default withRouter(connect(mapsStateToProps, mapsDispatchToProps)(ListsComponent));
