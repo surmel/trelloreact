@@ -83,7 +83,7 @@ class BoardsComponent extends Component {
                             {
                                 this.props.boards ? this.props.boards.map((board, index) => {
                                     return (
-                                        <Link key={index} to={`/list/${board.name}/${board.id}`} params={{name: board.name, id: board.id}}>
+                                        <Link key={index} to={`/list/${board.id}`} params={{name: board.name, id: board.id}}>
                                             <CreateNewBoard name={this.state.name}
                                                             data={board}/>
                                         </Link>

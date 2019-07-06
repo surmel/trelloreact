@@ -3,10 +3,11 @@ import {connect} from "react-redux";
 import AddNewListNameComponent from "./addNewListNameComponent";
 import NewListButtonComponent from "../../components/lists/NewListButtonComponent";
 import '../../components/lists/css/List.css';
-import {openNewTicket, showLists} from '../../actions/lists/lists';
+import {openNewTicket} from '../../actions/lists/lists';
 import AddNewTicketNameComponent from "../tickets/addNewTicketNameComponent";
 import NewTicketButtonComponent from "../../components/tickets/newTicketButtonComponent";
 import {withRouter} from "react-router-dom";
+import {getListsAsync} from "../../thunks/list.thunks";
 
 class ListsComponent extends React.Component {
 
@@ -34,21 +35,18 @@ class ListsComponent extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/lists/lists.json')
-            .then(response => response.json())
-            .then(result => {
-                this.props.showLists(result)
-            });
+        this.props.getListsAsync();
     }
 
     render() {
         return (
-            <React.Fragment>
+            <>
                 {
                     this.props.lists ? this.props.lists.map((value, index) => {
+                        let show = !value.addNewTicketInput ? '76px' : 'auto';
                         return (
                             this.props.match.params.id === value.boardId &&
-                            <div key={index} className='listCss' style={{padding: '0'}}>
+                            <div key={index} className='listCss' style={{padding: '0',height: show}}>
                                 <div style={{padding: '10px'}}>{value.name}</div>
                                 {
                                     this.props.lists[index].addNewTicketInput ?
@@ -67,7 +65,7 @@ class ListsComponent extends React.Component {
                         <AddNewListNameComponent clickToggleList={this.toggleListAction} allLists={this.state.lists}/> :
                         <NewListButtonComponent clickToggleList={this.toggleListAction}/>
                 }
-            </React.Fragment>
+            </>
         )
     }
 }
@@ -78,7 +76,7 @@ const mapsStateToProps = state => ({
 });
 const mapsDispatchToProps = dispatch => ({
     openNewTicket: (id, bool) => dispatch(openNewTicket(id, bool)),
-    showLists: (name) => dispatch(showLists(name)),
+    getListsAsync: (name) => dispatch(getListsAsync(name)),
 
 });
 export default withRouter(connect(mapsStateToProps, mapsDispatchToProps)(ListsComponent));

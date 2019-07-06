@@ -55,7 +55,7 @@
 }
 
 .cardAdd {
-    background-color: #0000001f;
+    background-color: #ccc;
     cursor: pointer;
     color: #fff;
     height: 32px;
@@ -63,6 +63,7 @@
     padding: 4px;
     transition: height 0.2s;
     overflow: hidden;
+    border-radius: 4px;
 }
 .cardAddName {
     background-color: #0000001f;
@@ -75,12 +76,12 @@
     overflow: hidden;
 }
 .changedHeight{
-    height: 73px;
+    height: 85px;
     transition: height 0.1s;
 }
 .addColumn{
     padding: 4px 12px;
-    margin: 4px 0;
+    margin: 6px 0;
     background-color: #5aac44;
     box-shadow: 0 1px 0 0 #3f6f21;
     border: none;
@@ -94,6 +95,7 @@
     line-height: 20px;
     text-align: center;
     outline-color: transparent;
+    border-radius: 4px;
 }
 .cancelClass{
     width: 20px;
@@ -102,12 +104,11 @@
 }
 .addCard {
     margin: 0;
-    text-align: center;
+    text-align: left;
 }
 
 .listCss {
     background-color: #dfe1e6;
-    height: auto;
     width: 250px;
     margin: 5px;
     border-radius: 3px;

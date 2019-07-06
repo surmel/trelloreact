@@ -13,7 +13,7 @@ const styles = {
         boxShadow: 'none',
         float: 'left',
         fontSize: '13px',
-        height: '23px',
+        height: '35px',
         margin: '0',
         padding: '4px',
         lineHeight: '19px',
@@ -61,7 +61,7 @@ class AddNewListNameComponent extends React.Component {
             <div>
                 <div className='cardAdd changedHeight'>
                     <input type="text" id="listNameInput" style={styles.nameInput} onChange={this.inputChangeHandler}
-                           placeholder='Enter list title... '/>
+                           placeholder='Enter list title... ' value={this.state.listName} autoFocus='`true`'/>
                     <button className='addColumn' onClick={this.createLists}>Add List</button>
                     <img src={cancel} className='cancelClass' alt="cancelCard" onClick={this.props.clickToggleList}/>
                 </div>

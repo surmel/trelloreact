@@ -2,26 +2,31 @@
     {
         "id": "2",
         "boardId": "1",
-        "name": "Open"
+        "name": "Open",
+        "addNewTicketInput": false
     },
     {
         "id": "3",
         "boardId": "1",
-        "name": "In Progress"
+        "name": "In Progress",
+        "addNewTicketInput": false
     },
     {
         "id": "4",
         "boardId": "2",
-        "name": "Under Review"
+        "name": "Under Review",
+        "addNewTicketInput": false
     },
     {
         "id": "5",
         "boardId": "3",
-        "name": "Waiting For Merge"
+        "name": "Waiting For Merge",
+        "addNewTicketInput": false
     },
     {
         "id": "6",
         "boardId": "3",
-        "name": "Done"
+        "name": "Done",
+        "addNewTicketInput": false
     }
 ]

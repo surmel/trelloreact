@@ -14,7 +14,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component={WelcomeComponent}/>
                     <Route  path='/boards' component={BoardsComponent}/>
-                    <Route path='/list/:name/:id' component={MainListComponent}/>
+                    <Route path='/list/:id' component={MainListComponent}/>
                 </Switch>
             </Router>
         );
